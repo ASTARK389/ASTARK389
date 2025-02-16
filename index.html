@@ -71,6 +71,12 @@
             background: url('https://source.unsplash.com/1200x400/?technology,abstract') no-repeat center center/cover;
             border-radius: 8px 8px 0 0;
         }
+        canvas {
+            display: block;
+            margin: 20px auto;
+            background: lightblue;
+            border: 2px solid #fff;
+        }
     </style>
 </head>
 <body>
@@ -85,6 +91,51 @@
             <li><a href="#">Answer Keys</a></li>
         </ul>
         <a href="#" class="btn">Explore More</a>
+        <canvas id="gameCanvas" width="400" height="500"></canvas>
     </div>
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        let bird = { x: 50, y: 150, width: 20, height: 20, gravity: 1.5, lift: -20, velocity: 0 };
+        let pipes = [];
+        let frame = 0;
+
+        document.addEventListener("keydown", () => { bird.velocity = bird.lift; });
+        
+        function update() {
+            bird.velocity += bird.gravity;
+            bird.y += bird.velocity;
+            
+            if (bird.y + bird.height > canvas.height) bird.y = canvas.height - bird.height;
+            if (bird.y < 0) bird.y = 0;
+            
+            if (frame % 100 === 0) {
+                pipes.push({ x: canvas.width, y: Math.random() * (canvas.height - 200) });
+            }
+            
+            pipes.forEach((pipe, index) => {
+                pipe.x -= 2;
+                if (pipe.x + 40 < 0) pipes.splice(index, 1);
+            });
+        }
+        
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "yellow";
+            ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
+            ctx.fillStyle = "green";
+            pipes.forEach(pipe => {
+                ctx.fillRect(pipe.x, 0, 40, pipe.y);
+                ctx.fillRect(pipe.x, pipe.y + 150, 40, canvas.height - pipe.y - 150);
+            });
+        }
+        
+        function loop() {
+            update();
+            draw();
+            requestAnimationFrame(loop);
+        }
+        loop();
+    </script>
 </body>
 </html>
