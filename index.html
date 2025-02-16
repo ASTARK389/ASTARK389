@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sarkari Job Latest</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
             text-align: center;
-            background: #121212;
+            background: linear-gradient(135deg, #1e1e1e, #121212);
             color: white;
             margin: 0;
             padding: 0;
@@ -17,14 +18,15 @@
             max-width: 900px;
             margin: auto;
             padding: 20px;
-            background: #1e1e1e;
+            background: rgba(30, 30, 30, 0.9);
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             margin-top: 50px;
         }
         h1 {
             color: #00d4ff;
-            font-size: 28px;
+            font-size: 32px;
+            text-shadow: 2px 2px 10px rgba(0, 212, 255, 0.7);
         }
         ul {
             list-style: none;
@@ -33,6 +35,10 @@
         li {
             padding: 15px;
             border-bottom: 1px solid #444;
+            transition: 0.3s;
+        }
+        li:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
         a {
             text-decoration: none;
@@ -45,22 +51,31 @@
         }
         .btn {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 25px;
             margin-top: 20px;
-            background: #00d4ff;
+            background: linear-gradient(90deg, #00d4ff, #008cff);
             color: #121212;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 50px;
             transition: 0.3s;
+            box-shadow: 0px 4px 15px rgba(0, 212, 255, 0.3);
         }
         .btn:hover {
-            background: #ff6b6b;
+            background: linear-gradient(90deg, #ff6b6b, #ff3b3b);
             color: white;
+            box-shadow: 0px 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        .banner {
+            width: 100%;
+            height: 250px;
+            background: url('https://source.unsplash.com/1200x400/?technology,abstract') no-repeat center center/cover;
+            border-radius: 8px 8px 0 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="banner"></div>
         <h1>Sarkari Job Latest</h1>
         <ul>
             <li><a href="#">Latest Govt Jobs</a></li>
